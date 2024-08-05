@@ -1,0 +1,35 @@
+[server]
+hostname = "localhost"
+node_ip = "127.0.0.1"
+server_port = 9443
+# Disable HTTPS transport
+http_transport_enabled = true
+https_transport_enabled = false
+
+[super_admin]
+username = "admin"
+password = "admin"
+
+[database.shared_db]
+type = "mysql"
+url = "jdbc:mysql://mysql:3308/CUSTOM_USERSTORE"
+username = "root_user"
+password = "root_password"
+driver = "com.mysql.cj.jdbc.Driver"
+
+[user_store_mgt]
+custom_user_stores=["org.example.custom.CustomUserStoreManager"]
+
+[[user_store]]
+class = "org.example.custom.CustomUserStoreManager"
+type = "database_unique_id"
+properties.Enabled = true
+properties.ConnectionURL = "jdbc:mysql://mysql:3308/CUSTOM_USERSTORE"
+properties.ConnectionName = "root_user"
+properties.ConnectionPassword = "root_password"
+properties.DriverName = "com.mysql.cj.jdbc.Driver"
+properties.MaxActive = "50"
+properties.MaxWait = "60000"
+properties.MinIdle = "5"
+properties.TestOnBorrow = true
+properties.ValidationQuery = "SELECT 1"

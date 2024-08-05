@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  wso2is:
+    build:
+      context: ./WSO2
+    ports:
+      - "9443:9443"
+      - "9763:9763"
+    volumes:
+      - ./WSO2/user-mgt.xml:/home/wso2carbon/wso2is-7.0.0/repository/conf/user-mgt.xml
+      - ./WSO2/custom-user-store-manager/src/:/home/wso2carbon/custom-user-store-manager/src/
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: CUSTOM_USERSTORE
+      MYSQL_USER: root_user
+      MYSQL_PASSWORD: root_password
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./Mysql/modelo.sql:/docker-entrypoint-initdb.d/modelo.sql
