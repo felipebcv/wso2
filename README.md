@@ -15,12 +15,12 @@ Este repositório contém a configuração necessária para subir o WSO2 Identit
 
 Clone este repositório para sua máquina local usando o comando:
 
-
+```sh
 git clone https://github.com/usuario/repo-wso2is.git
 
 ### 2. Navegar até o Diretório do Projeto
 Entre no diretório do projeto clonado:
-
+```sh
 cd repo-wso2is
 
 ### 3. Subir os Contêineres com Docker Compose
@@ -30,6 +30,7 @@ docker-compose up
 
 ### 4. Acessar o WSO2 Identity Server
 Após os contêineres estarem completamente iniciados, acesse a interface de gerenciamento do WSO2 Identity Server no navegador:
+```sh
 http://localhost:9443/carbon
 
 Use as credenciais padrão para login:
